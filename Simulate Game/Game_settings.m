@@ -7,6 +7,10 @@
 % bandit.best_arm=The best arm to pull to win on an average 
 function [bandit]= Game_settings(k)
 %% SETTING REWARD VALUES
+
+if k==1
+    error("Are you serious? 1 arm?")
+end
 arm_reward=zeros(k,1);
 for i=1:k
     % Reward is a random integer from 1-100
