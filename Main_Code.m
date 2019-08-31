@@ -6,16 +6,17 @@ addpath(p1);
 addpath(p2);
 addpath(p3);
 new_game=0;
-
+%% SETTING VARIABLES
 algorithms=["Random", "Epsilon Greedy", "UCB" , "Thompson Sampling" ,"Reinforce", "Softmax"];
 legend_name=algorithms(1:2);
 game_variance_threshold=1;
+
+T=2000;
+repeat_game=100;
+arms=5;
+game_mat = zeros(repeat_game,T,arms);
 for a=1:2
-    %% SETTING VARIABLES
-    T=2000;
-    repeat_game=100;
-    arms=5;
-    game_mat = zeros(repeat_game,T,arms);
+    
     %% GETTING BANDIT (SLOT) MACHINES
     tic
     if new_game==1
@@ -41,9 +42,6 @@ for a=1:2
                 game_history=game_history';
             end
             c=choose_arm(arms,game_history,algorithm_parameters);
-            if j==250
-                gg=012;
-            end
             reward=Sim_game_Bernouli(c,bandit);
             % Store the reward in the matrix
             game_mat(i,j,c)=reward;
@@ -83,5 +81,6 @@ end
 subplot(2,1,1)
 grid minor
 subplot(2,1,2)
+plot()
 grid minor
 d=squeeze(game_mat(6,:,:));
