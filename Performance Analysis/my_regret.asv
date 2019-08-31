@@ -18,7 +18,7 @@ average_reward_per_instant=sum(final_reward,2)/ensembles;
 times_played=game_mat;
 times_played(times_played~=0)=1;
 
-regret=zeros(ensembles,T);
+regret=zeros(T,1);
 %Computing regret as time progresses, over all the ensembles
 for i=1:T
     if i==50
@@ -31,10 +31,7 @@ for i=1:T
     delta=bandit.mu_star-bandit.mu;
     %Delta is the difference of each arm's actual mean with the optimal
     %mean
-    h=squeeze(times_each_arm_played(:,1,:));
-    %h is a 2D matrix holding the number of times each arm was pulled every
-    %ensemble.
-    regret(:,i)=(h*delta)';
+    regret()
+    r(i,1)=bandit.mu_star*i*ensembles-sum(average_reward_per_instant(1:i));
 end
-r=mean(regret);
 g=10;

@@ -31,4 +31,5 @@ bandit.arm_reward=arm_reward;
 bandit.prob_arm_win=prob_arm_win;
 bandit.mu_star=mu_star;
 bandit.best_arm=best_arm;
+bandit.mu=mu;
 end

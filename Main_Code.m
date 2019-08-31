@@ -12,9 +12,9 @@ legend_name=algorithms(1:2);
 for a=1:2
     %% SETTING VARIABLES
     
-    T=100;
-    repeat_game=1200;
-    arms=50;
+    T=50;
+    repeat_game=100;
+    arms=3;
     game_mat = zeros(repeat_game,T,arms);
     %% GETTING BANDIT (SLOT) MACHINES
     
