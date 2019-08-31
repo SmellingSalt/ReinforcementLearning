@@ -14,7 +14,7 @@ end
 arm_reward=zeros(k,1);
 for i=1:k
     % Reward is a random integer from 1-100
-    arm_reward(i,1)=randi(100,1);
+    arm_reward(i,1)=randi(1000,1);
 end
 
 %% SETTING REWARD PROBABILITIES

@@ -1,5 +1,4 @@
-function [choice]=choose_arm(arms,game_mat,iteration,algorithm_parameters)
-game_history=squeeze(game_mat(1,1:iteration,:));
+function [choice]=choose_arm(arms,game_history,algorithm_parameters)
 switch algorithm_parameters.choose_algortihm
     case "Random"
         choice=Random_algo(arms);

@@ -27,7 +27,7 @@ for i=1:T
     times_each_arm_played=sum(times_played(:,1:i,:),2);
     %The above line creates an Ensemble*Arms matrix where each element
     %holds the number of times each arm was played for a particular
-    %ensemble, up until thime step i.
+    %ensemble, up until time step i.
     delta=bandit.mu_star-bandit.mu;
     %Delta is the difference of each arm's actual mean with the optimal
     %mean
