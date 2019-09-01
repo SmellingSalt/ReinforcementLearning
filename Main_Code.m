@@ -5,14 +5,14 @@ p3=genpath("Algorithms");
 addpath(p1);
 addpath(p2);
 addpath(p3);
-new_game=0;
+new_game=1;
 %% SETTING VARIABLES
-algorithms=["Random", "Epsilon Greedy", "UCB" , "Thompson Sampling" ,"Reinforce", "Softmax"];
+algorithms=["Random", "Epsilon Greedy", "UCB" ,"Softmax", "Thompson Sampling" ,"Reinforce"];
 legend_name=algorithms(1:3);
 game_variance_threshold=1;
 
-T=500;
-repeat_game=1000;
+T=1000;
+repeat_game=500;
 arms=3;
 for a=1:3
     %% GETTING BANDIT (SLOT) MACHINES

@@ -12,7 +12,7 @@ ai=sum(times_played,1);
 rewards=game_history;
 rewards(rewards==-1)=0;
 %Normalising rewards so the UCB bound works
-rewards=rewards/highest_reward;
+rewards=rewards;
 %% PLAYING EACH ARM AT LEAST ONCE
 if iteration<=arms
     choice=iteration;
