@@ -1,7 +1,7 @@
 %% SETTING THE VARIABLES
 function [choice]=epsilon_greedy(game_history)
 [iteration,arms]=size(game_history);
-epsilon=0.1;
+epsilon=0.05;
 % Setting parameters as per the paper
 chance_of_other_arms=epsilon/arms;
 chance_of_best_arm=1-epsilon;
@@ -31,7 +31,7 @@ if rand>chance_of_best_arm
     %Else, keep picking random arms that is not the best arm
     tic
         while(choice==best_arm)
-            choice=randi(arms,1);
+            choice=randi((arms-1),1);
             if toc>3
                 error("Infinite Loop?")
             end

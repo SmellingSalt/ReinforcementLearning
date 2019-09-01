@@ -8,16 +8,15 @@ addpath(p3);
 new_game=0;
 %% SETTING VARIABLES
 algorithms=["Random", "Epsilon Greedy", "UCB" , "Thompson Sampling" ,"Reinforce", "Softmax"];
-legend_name=algorithms(1:2);
+legend_name=algorithms(1:3);
 game_variance_threshold=1;
 
-T=2000;
-repeat_game=100;
-arms=5;
-game_mat = zeros(repeat_game,T,arms);
-for a=1:2
-    
+T=500;
+repeat_game=1000;
+arms=3;
+for a=1:3
     %% GETTING BANDIT (SLOT) MACHINES
+    game_mat = zeros(repeat_game,T,arms);
     tic
     if new_game==1
         [bandit]= Game_settings(arms);
@@ -28,7 +27,6 @@ for a=1:2
     new_game=0;
     
     %% RUNNING THE GAME
-    
     choose_algortihm=algorithms(1,a);
     fprintf("Algorithm %s\n",choose_algortihm);
     algorithm_parameters.choose_algortihm=choose_algortihm;
@@ -41,12 +39,15 @@ for a=1:2
             if iscolumn(game_history)
                 game_history=game_history';
             end
-            c=choose_arm(arms,game_history,algorithm_parameters);
+            %Using highest reward for normalisation in UCB
+            highest_reward=max(bandit.arm_reward);
+            c=choose_arm(arms,game_history,algorithm_parameters,highest_reward);
             reward=Sim_game_Bernouli(c,bandit);
             % Store the reward in the matrix
             game_mat(i,j,c)=reward;
         end
         fprintf("Running %s %d\n",algorithms(1,a),i)
+        
     end
     %% PERFORMANCE ANALYSIS
     fprintf("Computing Regret\n")
@@ -76,11 +77,10 @@ for a=1:2
     grid minor
     hold on
     
-    
 end
+%% MINOR ADJUSTMENTS
 subplot(2,1,1)
 grid minor
 subplot(2,1,2)
-plot()
 grid minor
 d=squeeze(game_mat(6,:,:));
