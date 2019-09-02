@@ -5,13 +5,13 @@ switch algorithm_parameters.choose_algortihm
     case "Epsilon Greedy"
         choice=epsilon_greedy(game_history);
     case "UCB"
-        choice=UCB(game_history,highest_reward);
+        choice=UCB(game_history);
     case "Thompson Sampling"
         %Function call to algorithm
     case "Reinforce"
         %Function call to algorithm
     case "Softmax"
-        %Function call to algorithm
+         choice=softmax(game_history);
     otherwise
         error("Improper Algorithm Name")
 end

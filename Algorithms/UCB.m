@@ -1,4 +1,4 @@
-function [choice]=UCB(game_history,highest_reward)
+function [choice]=UCB(game_history)
 [iteration,arms]=size(game_history);
 
 %% COUNTING THE NUMBER OF TIMES EACH ARM WAS PLAYED
@@ -11,8 +11,7 @@ ai=sum(times_played,1);
 %% TOTAL REWARD
 rewards=game_history;
 rewards(rewards==-1)=0;
-%Normalising rewards so the UCB bound works
-rewards=rewards;
+
 %% PLAYING EACH ARM AT LEAST ONCE
 if iteration<=arms
     choice=iteration;

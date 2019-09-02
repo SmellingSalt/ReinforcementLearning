@@ -7,14 +7,16 @@ addpath(p2);
 addpath(p3);
 new_game=1;
 %% SETTING VARIABLES
-algorithms=["Random", "Epsilon Greedy", "UCB" ,"Softmax", "Thompson Sampling" ,"Reinforce"];
-legend_name=algorithms(1:3);
+algorithms=["Epsilon Greedy", "UCB" ,"Random","Softmax","Thompson Sampling" ,"Reinforce"];
+lo_lim=1;
+up_lim=4;
+legend_name=algorithms(lo_lim:up_lim);
 game_variance_threshold=1;
 
-T=1000;
-repeat_game=500;
-arms=3;
-for a=1:3
+T=300;
+repeat_game=100;
+arms=5;
+for a=lo_lim:up_lim
     %% GETTING BANDIT (SLOT) MACHINES
     game_mat = zeros(repeat_game,T,arms);
     tic
@@ -62,7 +64,6 @@ for a=1:3
     
     title("Regret vs Rounds")
     legend(legend_name)
-    grid minor
     hold on
     
     
@@ -73,8 +74,7 @@ for a=1:3
     xlabel("Rounds");
     
     title("Percentage of Optimal Arm Plays vs Rounds")
-    legend(algorithms)
-    grid minor
+    legend(legend_name)
     hold on
     
 end
