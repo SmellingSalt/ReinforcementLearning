@@ -1,4 +1,5 @@
-function [choice]=choose_arm(arms,game_history,algorithm_parameters,highest_reward)
+function [choice,algorithm_parameters]=choose_arm(arms,game_history,algorithm_parameters,highest_reward)
+
 switch algorithm_parameters.choose_algortihm
     case "Random"
         choice=Random_algo(arms);
@@ -7,7 +8,7 @@ switch algorithm_parameters.choose_algortihm
     case "UCB"
         choice=UCB(game_history);
     case "Thompson Sampling"
-        %Function call to algorithm
+        choice=Thompson(game_history);
     case "Reinforce"
         %Function call to algorithm
     case "Softmax"
