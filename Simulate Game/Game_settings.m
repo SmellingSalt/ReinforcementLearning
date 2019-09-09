@@ -13,8 +13,8 @@ if k==1
 end
 arm_reward=zeros(k,1);
 for i=1:k
-    % Reward is a random integer from 1-100
-    arm_reward(i,1)=rand;%randi(1000,1);
+    % Reward is a random integer 0 or 1
+    arm_reward(i,1)=randi(2,1)-1;
 end
 
 %% SETTING REWARD PROBABILITIES
